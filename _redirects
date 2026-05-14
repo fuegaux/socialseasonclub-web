@@ -1,0 +1,10 @@
+# Cloudflare Pages redirects
+# Docs: https://developers.cloudflare.com/pages/configuration/redirects/
+
+# Pretty URLs for legal pages
+/privacy        /privacy.html       301
+/terms          /terms.html         301
+/support        /support.html       301
+
+# www → apex (Cloudflare also enforces this at DNS level)
+https://www.handsdownsocialclub.com/*  https://handsdownsocialclub.com/:splat  301!
