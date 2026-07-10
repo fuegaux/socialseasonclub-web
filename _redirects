@@ -7,4 +7,4 @@
 /support        /support.html       301
 
 # www → apex (Cloudflare also enforces this at DNS level)
-https://www.handsdownsocialclub.com/*  https://handsdownsocialclub.com/:splat  301!
+https://www.socialseasonclub.com/*  https://socialseasonclub.com/:splat  301!

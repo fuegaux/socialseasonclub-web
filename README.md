@@ -1,8 +1,8 @@
-# handsdownsocialclub.com
+# socialseasonclub.com
 
-Marketing site, privacy policy, terms of service, and support page for **HandsDown Social Club** (iOS app, Dallas–Fort Worth event discovery).
+Marketing site, privacy policy, terms of service, and support page for **Social Season Club** (iOS app, Dallas–Fort Worth event discovery). Formerly HandsDown Social Club — rebranded 2026-07.
 
-Live at: **https://handsdownsocialclub.com** (after Cloudflare Pages setup — see Deploy below).
+Live at: **https://socialseasonclub.com** (Cloudflare Pages — see Deploy below).
 
 ---
 
@@ -16,7 +16,7 @@ Live at: **https://handsdownsocialclub.com** (after Cloudflare Pages setup — s
 ## File layout
 
 ```
-handsdownsocialclub-web/
+socialseasonclub-web/
 ├── index.html          # Landing page — hero, pillars, Club perks, FAQ, download CTA
 ├── privacy.html        # Privacy Policy (required for App Store submission)
 ├── terms.html          # Terms of Service
@@ -57,51 +57,38 @@ Then open `http://localhost:8080/`.
 - **Club perks** — listed in `index.html` under `<section class="section-club">`. Edit the nine `.perk` blocks.
 - **FAQ** — in `index.html` under `<section class="section-faq">`; deeper troubleshooting lives in `support.html`.
 
+## Domains
+
+Both domains are registered at **DreamHost** (not Cloudflare Registrar):
+
+- `socialseasonclub.com` — primary (registered 2026-07-09, 3-year term)
+- `handsdownsocialclub.com` — legacy brand (registered 2026-04-21); should 301 to the new domain
+
+Because DNS is hosted at DreamHost, attaching the apex custom domain to Cloudflare Pages requires either moving the zone to Cloudflare (add site → free plan → update nameservers at DreamHost) or CNAME records at DreamHost for subdomains.
+
 ## Deploy (Cloudflare Pages)
 
-Jose owns `handsdownsocialclub.com` on Cloudflare Registrar, so DNS + hosting unify on one account.
+GitHub repo: `fuegaux/socialseasonclub-web`. Cloudflare Pages project builds from `main`.
 
-### One-time setup
+**Build settings** (already configured in the Pages project):
+- Framework preset: **None**
+- Build command: *(blank — pure static)*
+- Build output directory: `/` (root)
 
-1. **Push this repo to GitHub** (already done if you cloned from there; otherwise see "Git setup" below).
-2. **Create a Cloudflare Pages project**:
-   - Go to **dash.cloudflare.com → Workers & Pages → Create → Pages → Connect to Git**.
-   - Authorize GitHub and pick the `handsdownsocialclub-web` repo.
-   - **Build settings**:
-     - Framework preset: **None**
-     - Build command: *(leave blank — pure static)*
-     - Build output directory: `/` (root)
-     - Root directory: `/` (root)
-   - Click **Save and Deploy**. First deploy completes in ~30 seconds and gives you a `*.pages.dev` preview URL.
-3. **Attach the custom domain**:
-   - In the Pages project → **Custom domains → Set up a custom domain**.
-   - Add `handsdownsocialclub.com`. Cloudflare detects the registrar match and adds the DNS automatically.
-   - Add `www.handsdownsocialclub.com` as a second custom domain — the `_redirects` file in this repo will 301 it to the apex.
-   - SSL is automatic — wait ~2 minutes for the certificate.
-4. **Done.** Every `git push` to `main` triggers an auto-deploy.
+Every `git push` to `main` triggers an auto-deploy to `*.pages.dev`; custom domains follow once DNS points at Cloudflare.
 
 ### Verify it's live
 
 ```bash
-curl -I https://handsdownsocialclub.com/        # → HTTP/2 200
-curl -I https://handsdownsocialclub.com/privacy # → HTTP/2 301 → /privacy.html
-curl -I https://www.handsdownsocialclub.com/    # → HTTP/2 301 → apex
-```
-
-## Git setup (if starting fresh)
-
-```bash
-cd ~/Desktop/Apps/handsdownsocialclub-web
-git init
-git add .
-git commit -m "Initial site"
-gh repo create handsdownsocialclub-web --public --source=. --remote=origin --push
+curl -I https://socialseasonclub.com/          # → HTTP/2 200
+curl -I https://socialseasonclub.com/privacy   # → HTTP/2 301 → /privacy.html
+curl -I https://www.socialseasonclub.com/      # → HTTP/2 301 → apex
 ```
 
 ## TODOs
 
-- [ ] Real TestFlight public link — currently the "Join the TestFlight" CTA emails Jose for an invite. Once a public TF link exists, swap the `mailto:` in `index.html` line ~31 for the `testflight.apple.com/join/...` URL.
-- [ ] Open Graph image — `images/og.png` is referenced but not yet created. Make a 1200×630 social card (gold "HANDS DOWN" wordmark on onyx) and drop it at `images/og.png`.
-- [ ] Email forwarding — Jose may want `hello@handsdownsocialclub.com` to forward to his Gmail. Set that up in Cloudflare → Email Routing once the domain is on Pages, then update the `mailto:` links sitewide (find/replace `josenegrete0910@gmail.com` → `hello@handsdownsocialclub.com`).
-- [ ] App Store badge — once HandsDown launches publicly (Q4 2026 per roadmap), add the official "Download on the App Store" SVG badge next to the TestFlight CTA in the hero and the `#download` section.
-- [ ] Founding-member waitlist — Phase 1 of the roadmap targets 500 founding members. If we want to collect emails before the App Store launch, drop in a Cloudflare Worker + KV (or Tally embed) on the `#download` section.
+- [ ] New SSC Open Graph image — the old `images/og.png` was HandsDown-branded, so the `og:image` tag was removed. Make a 1200×630 social card (gold "SOCIAL SEASON CLUB" wordmark on onyx), drop it at `images/og.png`, and restore the `og:image` + `twitter:card summary_large_image` tags in `index.html`.
+- [ ] Real TestFlight public link — currently the "Join the TestFlight" CTA emails Jose for an invite. Once a public TF link exists, swap the `mailto:` in `index.html` for the `testflight.apple.com/join/...` URL.
+- [ ] Email forwarding — Jose may want `hello@socialseasonclub.com` to forward to his Gmail. Set that up in Cloudflare → Email Routing once the domain is on Cloudflare, then update the `mailto:` links sitewide (find/replace `josenegrete0910@gmail.com` → `hello@socialseasonclub.com`).
+- [ ] App Store badge — once Social Season Club launches publicly, add the official "Download on the App Store" SVG badge next to the TestFlight CTA in the hero and the `#download` section.
+- [ ] Founding-member waitlist — if we want to collect emails before the App Store launch, drop in a Cloudflare Worker + KV (or Tally embed) on the `#download` section.
