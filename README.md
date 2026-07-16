@@ -1,8 +1,10 @@
 # socialseasonclub.com
 
+> **⚠️ ARCHIVED 2026-07-14.** This static-HTML repo never reached prod. The canonical marketing site is the **WordPress build on DreamHost** at https://www.socialseasonclub.com. Kept here for git history + potential future ref (copy blocks, brand tokens, screenshots). Do not deploy this repo — a fresh push would fight the WP site. See `archive/2026-07-14` tag on `main` for the last-good pre-archive commit.
+
 Marketing site, privacy policy, terms of service, and support page for **Social Season Club** (iOS app, Dallas–Fort Worth event discovery). Formerly HandsDown Social Club — rebranded 2026-07.
 
-Live at: **https://socialseasonclub.com** (Cloudflare Pages — see Deploy below).
+Live at: **https://www.socialseasonclub.com** (WordPress on DreamHost, not this repo).
 
 ---
 
