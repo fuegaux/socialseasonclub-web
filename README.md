@@ -90,7 +90,7 @@ curl -I https://www.socialseasonclub.com/      # → HTTP/2 301 → apex
 ## TODOs
 
 - [ ] New SSC Open Graph image — the old `images/og.png` was HandsDown-branded, so the `og:image` tag was removed. Make a 1200×630 social card (gold "SOCIAL SEASON CLUB" wordmark on onyx), drop it at `images/og.png`, and restore the `og:image` + `twitter:card summary_large_image` tags in `index.html`.
-- [ ] Real TestFlight public link — currently the "Join the TestFlight" CTA emails Jose for an invite. Once a public TF link exists, swap the `mailto:` in `index.html` for the `testflight.apple.com/join/...` URL.
+- [ ] ~~Real TestFlight public link~~ — **Do NOT add a TestFlight public share URL.** Per product decision 2026-07-18, invite-only flow via in-app referrals or ASC "external testers" invites — never `testflight.apple.com/join/...`. Keep the `mailto:` CTA in `index.html`.
 - [ ] Email forwarding — Jose may want `hello@socialseasonclub.com` to forward to his Gmail. Set that up in Cloudflare → Email Routing once the domain is on Cloudflare, then update the `mailto:` links sitewide (find/replace `josenegrete0910@gmail.com` → `hello@socialseasonclub.com`).
 - [ ] App Store badge — once Social Season Club launches publicly, add the official "Download on the App Store" SVG badge next to the TestFlight CTA in the hero and the `#download` section.
 - [ ] Founding-member waitlist — if we want to collect emails before the App Store launch, drop in a Cloudflare Worker + KV (or Tally embed) on the `#download` section.
