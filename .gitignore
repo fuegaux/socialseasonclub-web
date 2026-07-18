@@ -6,3 +6,11 @@ dist/
 *.log
 .env
 .env.local
+
+# security
+.env.*
+!.env.example
+*.p8
+*.keystore
+google-services.json
+GoogleService-Info.plist
