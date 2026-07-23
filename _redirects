@@ -6,5 +6,12 @@
 /terms          /terms.html         301
 /support        /support.html       301
 
+# Universal Link web fallbacks — someone taps a shared link WITHOUT the app
+# installed (or on desktop) and lands here instead of a 404. 200 rewrites,
+# not redirects, so the /event/<id> URL stays in the address bar and the
+# page's JS can read the id from the path.
+/event/*    /event.html    200
+/profile/*  /profile.html  200
+
 # www → apex (Cloudflare also enforces this at DNS level)
 https://www.socialseasonclub.com/*  https://socialseasonclub.com/:splat  301!

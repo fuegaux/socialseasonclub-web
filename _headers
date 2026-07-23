@@ -13,3 +13,12 @@
 
 /images/*
   Cache-Control: public, max-age=31536000, immutable
+
+# iOS Universal Links — the AASA file is extensionless, so static hosts tend
+# to serve it as application/octet-stream, which Apple's CDN rejects. Force
+# JSON. (If serving from Apache/DreamHost instead, the .htaccess equivalent is:
+#   <Files "apple-app-site-association">
+#     ForceType application/json
+#   </Files>)
+/.well-known/apple-app-site-association
+  Content-Type: application/json

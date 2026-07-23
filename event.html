@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Event — Social Season Club</title>
+  <meta name="robots" content="noindex" />
+  <link rel="icon" type="image/png" href="/images/app-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <style>
+    .fallback-page {
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 24px;
+    }
+    .fallback-kicker {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 28px;
+      color: var(--gold);
+      margin: 0 0 8px;
+    }
+    .fallback-id {
+      font-size: 13px;
+      color: rgba(245, 240, 232, 0.5);
+      word-break: break-all;
+      margin-top: 16px;
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <a href="/" class="brand">SOCIAL SEASON CLUB</a>
+    <div class="nav-links">
+      <a href="/support.html">Support</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
+      <a href="/#download" class="nav-cta">Get the app</a>
+    </div>
+  </nav>
+
+  <main class="fallback-page">
+    <p class="fallback-kicker">You're invited.</p>
+    <h1 class="section-title">This event lives in the app.</h1>
+    <p class="lede-muted">Open this link on a phone with Social Season Club installed and it'll take you straight to the event. Don't have the app yet?</p>
+    <a id="cta" href="/#download" class="btn btn-primary" style="margin-top: 24px;">Open in Social Season Club</a>
+    <p class="fallback-id">Event ID: <span id="entity-id">—</span></p>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-bottom" style="border-top: none;">
+      <p>© 2026 Social Season Club.</p>
+    </div>
+  </footer>
+
+  <script>
+    // TODO(jose): fill in the real App Store URL once SSC is publicly listed.
+    // Left blank on purpose — the app is invite-only (no public TestFlight
+    // links per the 2026-07-18 decision), so the CTA falls back to /#download.
+    var SSC_APP_STORE_URL = '';
+
+    // /event/<id> — the path segment after /event/. Display only; this page
+    // deliberately fetches nothing (no public read confirmed for events from
+    // the web — see PR notes; placeholder until Jose decides on RLS/public API).
+    var m = window.location.pathname.match(/^\/event\/([^\/]+)/);
+    document.getElementById('entity-id').textContent = m ? decodeURIComponent(m[1]) : 'unknown';
+    if (SSC_APP_STORE_URL) document.getElementById('cta').href = SSC_APP_STORE_URL;
+  </script>
+</body>
+</html>
