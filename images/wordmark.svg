@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  HandsDown Social Club wordmark
+  ------------------------------
+  Gold #D4A843 "HANDS DOWN" serif on transparent ground.
+  Font stack matches the site (Georgia → Times → generic serif) so it
+  renders the same in marketing surfaces, social cards, and email.
+  ViewBox is sized so the wordmark sits with generous breathing room
+  and can be placed at any size without clipping.
+-->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1200 240"
+     role="img"
+     aria-label="HandsDown Social Club">
+  <title>HandsDown Social Club</title>
+  <desc>HandsDown wordmark — gold serif on transparent.</desc>
+
+  <defs>
+    <style><![CDATA[
+      .wordmark {
+        font-family: Georgia, "Times New Roman", "IBM Plex Serif", serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 168px;
+        letter-spacing: 0.08em;
+        fill: #D4A843;
+      }
+      .rule {
+        stroke: #D4A843;
+        stroke-width: 2;
+      }
+      .micro {
+        font-family: Inter, -apple-system, "Helvetica Neue", Arial, sans-serif;
+        font-weight: 500;
+        font-size: 18px;
+        letter-spacing: 0.42em;
+        text-transform: uppercase;
+        fill: #D4A843;
+        fill-opacity: 0.78;
+      }
+    ]]></style>
+  </defs>
+
+  <!-- Main wordmark, centered on the viewBox -->
+  <text class="wordmark"
+        x="600"
+        y="148"
+        text-anchor="middle">HANDS DOWN</text>
+
+  <!-- Hairline rule under the wordmark, with two flanking caps that echo
+       the inscription feel of the app-icon brass plate. -->
+  <line class="rule" x1="430" y1="186" x2="770" y2="186"/>
+
+  <!-- Sub-label: society wordmark detail -->
+  <text class="micro"
+        x="600"
+        y="218"
+        text-anchor="middle">Social Club</text>
+</svg>
